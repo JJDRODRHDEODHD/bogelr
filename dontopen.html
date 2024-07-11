@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Page with Interactive Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .input-field {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center">Dynamic Page with Interactive Elements</h1>
+        
+        <div class="box">
+            <h2>Embedded YouTube Video</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/g4uOsS0FsEs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="box">
+            <h2>Random Quote</h2>
+            <p>"The only way to do great work is to love what you do." - Steve Jobs</p>
+        </div>
+
+        <div class="box">
+            <h2>Random Image</h2>
+            <img src="https://picsum.photos/300/200" alt="Random Image" style="width:100%; height:auto;">
+        </div>
+
+        <div class="box">
+            <h2>Random Link</h2>
+            <a href="https://example.com" target="_blank" class="button">Visit Example.com</a>
+        </div>
+
+        <div class="box">
+            <h2>Random List</h2>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2>Random Button</h2>
+            <button class="button" onclick="alert('Button Clicked!')">Click Me!</button>
+        </div>
+
+        <div class="box">
+            <h2>Random Form</h2>
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" class="input-field"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" class="input-field"><br><br>
+                <input type="submit" value="Submit" class="button">
+            </form>
+        </div>
+
+        <div class="box">
+            <h2>Random Progress Bar</h2>
+            <progress value="70" max="100" style="width: 100%;"></progress>
+        </div>
+    </div>
+</body>
+</html>
