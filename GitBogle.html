@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bogelr Search</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #d6d6d6;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 32px;
+            color: #4285f4;
+            margin-top: 20px;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 12px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 8px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #1c6de0;
+        }
+        .banner {
+            background-color: #f44336;
+            color: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+        .explanation {
+            font-size: 14px;
+            margin-top: 10px;
+            display: none; /* Initially hidden */
+        }
+        .explanation-button {
+            background-color: #1c6de0;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+            input[type="text"] {
+                width: 60%;
+            }
+        }
+        .disclaimer {
+            font-size: 14px;
+            color: #80868b;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bogelr Search</h1>
+        <form id="searchForm">
+            <input type="text" id="searchBox" placeholder="Search Bogelr or try some easter eggs...">
+            <input type="submit" value="Bogelr Search">
+        </form>
+        <div id="banner" class="banner">
+            Bogle Is Out of Service. Please Switch To Bogelr For the Best Experience. Goodbye Bogle Users.
+            <button id="explanationButton" class="explanation-button">Learn More</button>
+        </div>
+        <div id="explanation" class="explanation">
+            Bogle has Rebranded to Bogelr as of 2024, so the bogle you Know and Love, is now Inside The New and improved Bogelr browser made by Bogle Technologies.
+        </div>
+        <p class="disclaimer">This page is affiliated with Bogelr.</p>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const query = document.getElementById('searchBox').value.trim().toLowerCase();
+
+            switch (query) {
+                case 'bogle':
+                    showBanner("Bogle Is Out of Service. Please Switch To Bogelr For the Best Experience. Goodbye Bogle Users.");
+                    break;
+                case 'bonlop':
+                    showBanner("Bonlop has been replaced with Google.");
+                    break;
+                case 'bogle technologies':
+                    window.location.href = 'https://sites.google.com/view/bogle-technologies/home';
+                    break;
+                case 'bogelr apk':
+                    window.location.href = 'https://sites.google.com/view/bownload/bogelr';
+                    break;
+                case 'bogelr rocks':
+                    showEasterEgg("🎉 Bogelr rocks! 🚀");
+                    break;
+                case 'open sesame':
+                    showEasterEgg("🪄 The magic door opens... 🌟");
+                    break;
+                case 'easter egg':
+                    showEasterEgg("🥚 You found an easter egg! 🐰");
+                    break;
+                case 'hello world':
+                    showEasterEgg("🌍 Hello, World! 🌟");
+                    break;
+                case '42':
+                    showEasterEgg("🔢 The answer to life, the universe, and everything is 42.");
+                    break;
+                default:
+                    // Perform a normal search (redirect to Google)
+                    window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        // Toggle explanation visibility
+        document.getElementById('explanationButton').addEventListener('click', function() {
+            const explanation = document.getElementById('explanation');
+            explanation.style.display = (explanation.style.display === 'block') ? 'none' : 'block';
+        });
+
+        // Function to show the banner
+        function showBanner(message) {
+            // Show the banner
+            const banner = document.getElementById('banner');
+            banner.style.display = 'block';
+            // Set the banner message and add the explanation button
+            banner.innerHTML = `${message} <button id="explanationButton" class="explanation-button">Learn More</button>`;
+            
+            // Add the event listener again for the new explanation button
+            document.getElementById('explanationButton').addEventListener('click', function() {
+                const explanation = document.getElementById('explanation');
+                explanation.style.display = (explanation.style.display === 'block') ? 'none' : 'block';
+            });
+        }
+
+        // Function to show an easter egg message
+        function showEasterEgg(message) {
+            // Create a new element for the easter egg message
+            const easterEgg = document.createElement('div');
+            easterEgg.textContent = message;
+            easterEgg.style.fontSize = '24px';
+            easterEgg.style.fontWeight = 'bold';
+            easterEgg.style.marginTop = '20px';
+            easterEgg.style.color = '#4caf50'; // Green color
+            // Append the easter egg message to the container
+            const container = document.querySelector('.container');
+            container.appendChild(easterEgg);
+        }
+    </script>
+</body>
+</html>
