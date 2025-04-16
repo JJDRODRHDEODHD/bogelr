@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bogelr Search</title>
+  <style>
+    :root {
+      --bg-light: #f2f2f2;
+      --bg-dark: #121212;
+      --text-light: #000;
+      --text-dark: #f2f2f2;
+      --primary: #4285f4;
+      --accent: #1c6de0;
+      --banner-bg: #f44336;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 500px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: var(--box-shadow);
+      text-align: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark .container {
+      background-color: #1f1f1f;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: var(--primary);
+      margin: 0 0 20px;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 32px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--box-shadow);
+    }
+
+    input[type="text"]:focus {
+      transform: scale(1.05);
+      border-color: var(--primary);
+    }
+
+    input[type="submit"] {
+      padding: 12px 20px;
+      background-color: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .banner {
+      background-color: var(--banner-bg);
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .explanation {
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .explanation-button {
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .disclaimer {
+      font-size: 14px;
+      color: #80868b;
+      margin-top: 16px;
+    }
+
+    .toggle-dark {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 2px solid var(--primary);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .toggle-dark:hover {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      input[type="text"] {
+        width: 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-dark" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+  <div class="container">
+    <h1>Bogelr Search</h1>
+    <form id="searchForm">
+      <input type="text" id="searchBox" placeholder="Search Bogelr or try some easter eggs...">
+      <input type="submit" value="Bogelr Search">
+    </form>
+    <div id="banner" class="banner"></div>
+    <div id="explanation" class="explanation"></div>
+    <p class="disclaimer">This page is affiliated with Bogelr and Bonlute.</p>
+  </div>
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const query = document.getElementById('searchBox').value.trim().toLowerCase();
+
+      switch (query) {
+        case 'bonlop':
+          showBanner("Bonlop has been replaced with Google.");
+          break;
+        case 'bogle technologies':
+          window.location.href = 'https://sites.google.com/view/bogle-technologies/home';
+          break;
+        case 'bogelr apk':
+          window.location.href = 'https://sites.google.com/view/bownload/bogelr';
+          break;
+        case 'bogelr rocks':
+          showEasterEgg("🎉 Bogelr rocks! 🚀");
+          break;
+        case 'open sesame':
+          showEasterEgg("🪄 The magic door opens... 🌟");
+          break;
+        case 'easter egg':
+          showEasterEgg("🥚 You found an easter egg! 🐰");
+          break;
+        case 'hello world':
+          showEasterEgg("🌍 Hello, World! 🌟");
+          break;
+        case '42':
+          showEasterEgg("🔢 The answer to life, the universe, and everything is 42.");
+          break;
+        case 'bonlute':
+          window.location.href = 'https://sites.google.com/view/bonlute';
+          break;
+        default:
+          window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      }
+    });
+
+    function showBanner(message) {
+      const banner = document.getElementById('banner');
+      banner.style.display = 'block';
+      banner.innerHTML = `${message} <button id="explanationButton" class="explanation-button">Learn More</button>`;
+
+      document.getElementById('explanationButton').addEventListener('click', function () {
+        const explanation = document.getElementById('explanation');
+        explanation.textContent = "Bonlute is the new face of Bogle Technologies starting in 2025. Welcome to a modern web!";
+        explanation.style.display = 'block';
+      });
+    }
+
+    function showEasterEgg(message) {
+      const egg = document.createElement('div');
+      egg.textContent = message;
+      egg.style.fontSize = '22px';
+      egg.style.fontWeight = 'bold';
+      egg.style.marginTop = '20px';
+      egg.style.color = '#4caf50';
+      document.querySelector('.container').appendChild(egg);
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
